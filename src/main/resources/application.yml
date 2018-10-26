@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false
+    password: uAiqwVwjJ8-iguojian
+    url: jdbc:mysql://123.56.11.62:3306/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
   jackson:
@@ -13,6 +13,7 @@ spring:
     port: 6379
 server:
   context-path: /sell
+  port: 8080
 #logging:
 #  pattern:
 #    console: "%d - %msg%n"
@@ -25,8 +26,8 @@ server:
 wechat:
 #  mpAppId: wxdcf91e9f784bfad0
 #  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268 #测试号appId,appSecret
-  mpAppId: wxd898fcb01713c658
-  mpAppSecret: xxxxxxxxx #借用号appId,appSecret
+  mpAppId: wx3e08416263e5eaa6
+  mpAppSecret: 6a98b0ea97dd3c830d900870e33d53ba #借用号appId,appSecret
 #  openAppId: wx6ad144e54af67d87
 #  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
   openAppId: wx6ad144e54af67d87
@@ -39,6 +40,6 @@ wechat:
     orderStatus: GoCullfix05R-rCibvoyI87ZUg50cyieKA5AyX7pPzo
 
 projectUrl:
-  wechatMpAuthorize: http://sqmax.natapp1.cc
-  wechatOpenAuthorize: http://sqmax.natapp1.cc
-  sell: http://sqmax.natapp1.cc
+  wechatMpAuthorize: http://shiyue.cross.echosite.cn
+  wechatOpenAuthorize: http://shiyue.cross.echosite.cn
+  sell: http://shiyue.cross.echosite.cn
