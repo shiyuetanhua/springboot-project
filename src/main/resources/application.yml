@@ -14,13 +14,11 @@ spring:
 server:
   context-path: /sell
   port: 8080
-#logging:
-#  pattern:
-#    console: "%d - %msg%n"
-##  path: F://日志
-#  file: F://日志/sell.log
-#  level:
-#    com.imooc.LoggerTest: debug
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: debug
 
 # 下面是微信相关的配置
 wechat:

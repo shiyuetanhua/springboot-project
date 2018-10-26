@@ -6,7 +6,7 @@ import com.imooc.exception.SellException;
 import com.imooc.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.api.WxConsts;
-import me.chanjar.weixin.common.exception.WxErrorException;
+import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class WechatController {
         //1. 配置
         //2.调用方法
         String url=projectUrlConfig.getWechatMpAuthorize()+"/sell/wechat/userInfo";
-        String redirectUrl=wxMpService.oauth2buildAuthorizationUrl(url,WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
+        String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, URLEncoder.encode(returnUrl));
         log.info("【微信网页授权】获取code,redirectUrl={}",redirectUrl);
         return "redirect:"+redirectUrl;//重定向到下面一个方法
     }
@@ -66,7 +66,7 @@ public class WechatController {
     @GetMapping("/qrAuthorize")
     public String qrAuthorize(@RequestParam("returnUrl") String returnUrl){
         String url=projectUrlConfig.getWechatOpenAuthorize()+"/sell/wechat/userInfo";
-        String redirectUrl=wxOpenService.buildQrConnectUrl(url,WxConsts.QRCONNECT_SCOPE_SNSAPI_LOGIN,URLEncoder.encode(returnUrl));
+        String redirectUrl = wxOpenService.buildQrConnectUrl(url, WxConsts.QrConnectScope.SNSAPI_LOGIN, URLEncoder.encode(returnUrl));
         return "redirect:"+redirectUrl;
     }
     @GetMapping("/qrUserInfo")
