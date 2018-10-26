@@ -59,16 +59,18 @@ public class WechatController {
         return "redirect:"+ returnUrl+"?openid="+openId;
 
     }//以上两个方法是SDK方式微信网页授权的过程，
-    // 访问http://sqmax.natapp1.cc/sell/wechat/authorize?returnUrl=http://www.imooc.com，
+    // 访问http://shiyue.cross.echosite.cn/sell/wechat/authorize?returnUrl=http://shiyue.cross.echosite.cn/sell/seller/login
     //最终将会跳转到这个链接：http://www.imooc.com?openid={openid}
 
     //微信登陆
     @GetMapping("/qrAuthorize")
     public String qrAuthorize(@RequestParam("returnUrl") String returnUrl){
-        String url=projectUrlConfig.getWechatOpenAuthorize()+"/sell/wechat/userInfo";
-        String redirectUrl = wxOpenService.buildQrConnectUrl(url, WxConsts.QrConnectScope.SNSAPI_LOGIN, URLEncoder.encode(returnUrl));
+        String url = projectUrlConfig.getWechatOpenAuthorize() + "/sell/wechat/qrUserInfo";
+        String redirectUrl = wxOpenService.buildQrConnectUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, URLEncoder.encode(returnUrl));
         return "redirect:"+redirectUrl;
     }
+    // 访问http://shiyue.cross.echosite.cn/sell/wechat/qrAuthorize?returnUrl=http://shiyue.cross.echosite.cn/sell/wechat/qrUserInfo
+
     @GetMapping("/qrUserInfo")
     public String qrUserInfo(@RequestParam("code") String code,
                              @RequestParam("state") String returnUrl){
