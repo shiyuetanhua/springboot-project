@@ -47,7 +47,7 @@ public class WechatController {
     @GetMapping("/userInfo")
     public String userInfo(@RequestParam("code") String code,
                          @RequestParam("state") String returnUrl){
-        WxMpOAuth2AccessToken wxMpOAuth2AccessToken=new WxMpOAuth2AccessToken();
+        WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();
         try {
             wxMpOAuth2AccessToken=wxMpService.oauth2getAccessToken(code);
         }catch (WxErrorException e){
@@ -59,7 +59,7 @@ public class WechatController {
         return "redirect:"+ returnUrl+"?openid="+openId;
 
     }//以上两个方法是SDK方式微信网页授权的过程，
-    // 访问http://shiyue.cross.echosite.cn/sell/wechat/authorize?returnUrl=http://shiyue.cross.echosite.cn/sell/seller/login
+    // 访问http://shiyue.cross.echosite.cn/sell/wechat/authorize?returnUrl=http://shiyue.cross.echosite.cn/sell/wechat/userInfo
     //最终将会跳转到这个链接：http://www.imooc.com?openid={openid}
 
     //微信登陆
